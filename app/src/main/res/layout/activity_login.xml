@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+android:background="@drawable/rounded_edit"
+        android:padding="10dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter Your Mail"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="181dp"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/rounded_edit"
+        android:layout_below="@id/mail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="100dp"
+        android:hint="Enter Your Password"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="181dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_below="@id/pw"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="533dp" />
+
+    <Button
+        android:id="@+id/createaccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create A New Account"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login"
+        android:layout_marginTop="30dp"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="616dp" />
+
+
+</RelativeLayout>

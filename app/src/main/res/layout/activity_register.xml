@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/bleu"
+        android:textStyle="bold"
+        android:text="S'inscrire"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:id="@+id/matricule"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="50dp"
+        android:hint=" Nom Et Prénom"
+        android:inputType="text"
+        android:padding="13dp"
+        android:background="@drawable/inputs"
+        android:elevation="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableStart="@drawable/user"
+        android:drawableLeft="@drawable/user"
+        />
+    <EditText
+        android:id="@+id/full_name"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="50dp"
+        android:hint=" Nom Et Prénom"
+        android:inputType="text"
+        android:padding="13dp"
+        android:background="@drawable/inputs"
+        android:elevation="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableStart="@drawable/user"
+        android:drawableLeft="@drawable/user"
+        />
+
+    <EditText
+        android:id="@+id/register_mail"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="50dp"
+        android:hint=" Email"
+        android:inputType="textEmailAddress"
+        android:padding="13dp"
+        android:background="@drawable/inputs"
+        android:elevation="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableStart="@drawable/mail"
+        android:drawableLeft="@drawable/mail"
+        />
+
+
+    <EditText
+        android:id="@+id/register_pw"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="50dp"
+        android:hint=" Mot de passe"
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:background="@drawable/inputs"
+        android:elevation="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableStart="@drawable/key"
+        android:drawableLeft="@drawable/key"
+        />
+    <EditText
+        android:id="@+id/confirm_pw"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="50dp"
+        android:hint=" Confirmer mot de passe"
+        android:inputType="textPassword"
+        android:padding="13dp"
+        android:background="@drawable/inputs"
+        android:elevation="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:drawableStart="@drawable/key"
+        android:drawableLeft="@drawable/key"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/client"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/btn_gris_bleu"
+            android:text="Client"
+            android:textColor="@color/bleu"
+            android:textSize="22sp"
+            android:textAllCaps="false"
+
+            />
+
+        <Button
+            android:id="@+id/employeur"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bouton"
+            android:textColor="@color/blanc"
+            android:textSize="21sp"
+            android:textAllCaps="false"
+            android:text="Employeur"
+
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/bouton"
+        android:text="S'Inscrire"
+        android:textSize="25sp"
+        android:textAllCaps="false"
+        android:textColor="@color/blanc"
+
+        />
+
+    <TextView
+        android:id="@+id/haveit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Already Have An Account"
+        android:layout_margin="30dp"
+        android:textStyle="bold"
+        android:textSize="26dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:background="@drawable/inputs"
+        android:gravity="center_horizontal" />
+
+
+</LinearLayout>
