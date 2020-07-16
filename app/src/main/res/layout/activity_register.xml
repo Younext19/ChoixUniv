@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="15dp"
         android:layout_height="50dp"
-        android:hint=" Nom Et Prénom"
+        android:hint=" Matricule"
         android:inputType="text"
         android:padding="13dp"
         android:background="@drawable/inputs"
@@ -102,13 +102,13 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/client"
+            android:id="@+id/sm"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="30dp"
             android:background="@drawable/btn_gris_bleu"
-            android:text="Client"
+            android:text="SM"
             android:textColor="@color/bleu"
             android:textSize="22sp"
             android:textAllCaps="false"
@@ -116,7 +116,7 @@
             />
 
         <Button
-            android:id="@+id/employeur"
+            android:id="@+id/mi"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -125,7 +125,7 @@
             android:textColor="@color/blanc"
             android:textSize="21sp"
             android:textAllCaps="false"
-            android:text="Employeur"
+            android:text="MI"
 
             />
     </RelativeLayout>

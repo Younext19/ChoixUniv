@@ -4,66 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".LoginActivity">
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    <EditText
-        android:id="@+id/mail"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-android:background="@drawable/rounded_edit"
-        android:padding="10dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_centerHorizontal="true"
-        android:hint="Enter Your Mail"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="181dp"
-        tools:ignore="MissingConstraints" />
-    <EditText
-        android:id="@+id/pw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/rounded_edit"
-        android:layout_below="@id/mail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
-        android:hint="Enter Your Password"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="181dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Se Connecter"
+            android:textSize="45dp"
+
+           android:layout_marginLeft="30dp"
+            android:textColor="@color/bleu"
+            android:textStyle="bold"
+
+            />
+
+        <EditText
+            android:id="@+id/loginmail"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:elevation="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt"
+            android:hint=" Enter Your Email"
+
+            android:inputType="textEmailAddress"
+            android:padding="13dp"
+            android:background="@drawable/inputs"
+            android:layout_margin="20dp"
+            android:drawableStart="@drawable/mail"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/mail" />
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/loginmail"
+            android:hint=" Enter Your Password"
+            android:elevation="5dp"
+            android:inputType="textPassword"
+            android:padding="13dp"
+            android:background="@drawable/inputs"
+            android:layout_margin="20dp"
+            android:drawableStart="@drawable/key"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/key" />
+
+        <TextView
+            android:id="@+id/forget_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="2dp"
+            android:textAlignment="textEnd"
+            android:padding="4dp"
+            android:text="Forgot Your Password ?"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:gravity="end" />
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/forget_pw"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:background="@drawable/bouton"
+            android:drawableStart="@drawable/send"
+            android:padding="13dp"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            android:textSize="15sp"
+            android:textColor="#000"
 
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_below="@id/pw"
-        android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="533dp" />
+            android:drawableLeft="@drawable/send" />
+        <TextView
+            android:id="@+id/register_acc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/submit"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="2dp"
+            android:textAlignment="center"
+            android:padding="4dp"
+            android:text="Create A New Account ?"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:gravity="center_horizontal" />
 
-    <Button
-        android:id="@+id/createaccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create A New Account"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/login"
-        android:layout_marginTop="30dp"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="616dp" />
-
-
+    </RelativeLayout>
 </RelativeLayout>
