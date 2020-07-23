@@ -28,15 +28,39 @@ public class RegisterActivity extends AppCompatActivity {
     EditText matric,fulln,mail,pw,cfpw;
     Button smatiere,minfo,submit;
     TextView haveaccount;
-    String Matricule, FullName, Mail, Password, confirmPassword,Field;
+    String Matricule, FullName, Mail, Password, confirmPassword;
     FirebaseFirestore db;
     private FirebaseAuth mAuth;
+    float i,j;
+    String field, moy1, moy2;
+
+    String field_final;
+    TextView lwl, zawja;
+    Button somatiere,moinfo,spec1,spec2;
+    EditText first,second;
+    Button app;
+    private String UserId;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+
+        // INITIALISATION
+        somatiere = findViewById(R.id.sm);
+        moinfo = findViewById(R.id.mi);
+        spec1 = findViewById(R.id.spe1);
+        spec2 = findViewById(R.id.spe2);
+        first = findViewById(R.id.moyinfo);
+        second = findViewById(R.id.moymath);
+        lwl = findViewById(R.id.txt3);
+        zawja = findViewById(R.id.txt4);
+        UserId = mAuth.getCurrentUser().getUid();
+
         init();
         haveaccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,26 +69,68 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        smatiere.setOnClickListener(new View.OnClickListener() {
+
+        somatiere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                smatiere.setText("Science De La Matiere");
-                smatiere.getLayoutParams().width=300;
-                Field = "SM";
-                minfo.setVisibility(View.GONE);
+                somatiere.setText("Science De La Matiere");
+                field = "SM";
+                spec1.setText("Chimie");
+                spec2.setText("Physique");
+                lwl.setText("Moyenne Unité Chimie");
+                zawja.setText("Moyenne Unité Physique");
+                moinfo.setVisibility(View.GONE);
+                // HNA SWALEH TA3 SM
+                // TODO NGET EDITTEXT CHHAL NERSELEHOM L BDD
+
+
+                spec1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        spec2.setVisibility(View.GONE);
+                        // HNA SIYED KHTAR CHIMIE
+                        field = "Chimie";
+                    }
+                });
+                spec2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        spec1.setVisibility(View.GONE);
+                        field = "Physique";
+                    }
+                });
+
+
             }
         });
-        minfo.setOnClickListener(new View.OnClickListener() {
+        moinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                minfo.setText("Math Et Informatique");
-                minfo.getLayoutParams().width=300;
+                moinfo.setText("Math Et Informatique");
+                field = "MI";
+                somatiere.setVisibility(View.GONE);
+                spec1.setText("Math");
+                spec2.setText("Info");
+                lwl.setText("Moyenne Unité Math");
+                zawja.setText("Moyenne Unité Info");
 
-                Field = "MI";
-                smatiere.setVisibility(View.GONE);
+                spec1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        spec2.setVisibility(View.GONE);
+                        field = "Math";
+                    }
+                });
+                spec2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        spec1.setVisibility(View.GONE);
+                        field = "Info";
+                    }
+                });
+
             }
         });
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +140,10 @@ public class RegisterActivity extends AppCompatActivity {
                 Mail = mail.getText().toString().trim();
                 Password = pw.getText().toString().trim();
                 confirmPassword = cfpw.getText().toString().trim();
+                moy1 = first.getText().toString();
+                moy2 = second.getText().toString();
+                i =  Float.parseFloat("moy1");
+                j = Float.parseFloat("moy2");
                 if (TextUtils.isEmpty(Matricule)){
                     matric.setError("Entrez Votre Matricule");
                     Toast.makeText(RegisterActivity.this, "Matricule De Certificat De Scolarité", Toast.LENGTH_SHORT).show();
@@ -103,6 +173,11 @@ public class RegisterActivity extends AppCompatActivity {
                     pw.setError("Passwords Are Not Same");
                     cfpw.setError("Passwords Are Not Same");
                 }
+                if(i>20 || i<0 || j>20 || j<0 ){
+                    first.setError("Une Des Moyenne Est Incorrecte");
+                    second.setError("Une Des Moyenne Est Incorrecte");
+                }
+
 
                 else {
                     //TODO : HNA COMPTE TECREEh
@@ -116,19 +191,23 @@ public class RegisterActivity extends AppCompatActivity {
                                             // HNA TECREA COMPTE LAZEM NSAUVGARDER
                                             // DATA F FIRESTORE WELA REALTIME
 
+                                            System.out.println("hadi" +field+" whadi "+moy1+" whadi "+moy2);
                                             CollectionReference dbstudents = db.collection("Students");
                                             Data data = new Data(
                                                     Matricule,
                                                     FullName,
                                                     Mail,
-                                                    Field,
-                                                    Password);
+                                                    Password,
+                                                    field,
+                                                    moy1,
+                                                    moy2);
                                             dbstudents.add(data)
                                                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                         @Override
                                                         public void onSuccess(DocumentReference documentReference) {
 
                                                             Toast.makeText(RegisterActivity.this, "worked", Toast.LENGTH_SHORT).show();
+
                                                         }
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
@@ -139,8 +218,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                 //startActivity
                                             });
-                                            Intent intent2 = new Intent(RegisterActivity.this, Complete.class);
-                                            startActivity(intent2);
+
                                         }else{
                                             Toast.makeText(RegisterActivity.this, "didnt even logged in", Toast.LENGTH_SHORT).show();
                                         }
