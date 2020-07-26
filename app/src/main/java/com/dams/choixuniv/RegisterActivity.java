@@ -24,6 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
+
 public class RegisterActivity extends AppCompatActivity {
     EditText matric,fulln,mail,pw,cfpw;
     Button smatiere,minfo,submit;
@@ -59,7 +61,6 @@ public class RegisterActivity extends AppCompatActivity {
         second = findViewById(R.id.moymath);
         lwl = findViewById(R.id.txt3);
         zawja = findViewById(R.id.txt4);
-        UserId = mAuth.getCurrentUser().getUid();
 
         init();
         haveaccount.setOnClickListener(new View.OnClickListener() {
@@ -142,8 +143,8 @@ public class RegisterActivity extends AppCompatActivity {
                 confirmPassword = cfpw.getText().toString().trim();
                 moy1 = first.getText().toString();
                 moy2 = second.getText().toString();
-                i =  Float.parseFloat("moy1");
-                j = Float.parseFloat("moy2");
+                i =  Float.parseFloat(moy1);
+                j = Float.parseFloat(moy2);
                 if (TextUtils.isEmpty(Matricule)){
                     matric.setError("Entrez Votre Matricule");
                     Toast.makeText(RegisterActivity.this, "Matricule De Certificat De Scolarité", Toast.LENGTH_SHORT).show();
@@ -190,35 +191,37 @@ public class RegisterActivity extends AppCompatActivity {
                                         if (task.isSuccessful()){
                                             // HNA TECREA COMPTE LAZEM NSAUVGARDER
                                             // DATA F FIRESTORE WELA REALTIME
+                                            UserId = mAuth.getCurrentUser().getUid();
 
-                                            System.out.println("hadi" +field+" whadi "+moy1+" whadi "+moy2);
-                                            CollectionReference dbstudents = db.collection("Students");
-                                            Data data = new Data(
-                                                    Matricule,
-                                                    FullName,
-                                                    Mail,
-                                                    Password,
-                                                    field,
-                                                    moy1,
-                                                    moy2);
-                                            dbstudents.add(data)
-                                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            HashMap hashMap = new HashMap();
+                                            hashMap.put("matricule", Matricule);
+                                            hashMap.put("nomprenom", FullName);
+                                            hashMap.put("email",Mail);
+                                            hashMap.put("pw",Password);
+                                            hashMap.put("fild",field);
+                                            hashMap.put("moy lewla",moy1);
+                                            hashMap.put("moy zawja",moy2);
+
+                                            db.collection("Students").document(UserId).set(hashMap)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
-                                                        public void onSuccess(DocumentReference documentReference) {
-
-                                                            Toast.makeText(RegisterActivity.this, "worked", Toast.LENGTH_SHORT).show();
-
+                                                        public void onSuccess(Void aVoid) {
+                                                            if (Mail == "admin@admin.com"){
+                                                                Intent intent_admin = new Intent(RegisterActivity.this, Admin.class);
+                                                                startActivity(intent_admin);
+                                                            }
+                                                            else{
+                                                                Intent intent4 = new Intent(RegisterActivity.this, StatutEtudiant.class);
+                                                                startActivity(intent4);
+                                                            }
+                                                            Toast.makeText(RegisterActivity.this, "Data Saved!", Toast.LENGTH_SHORT).show();
                                                         }
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(RegisterActivity.this, "didnt", Toast.LENGTH_SHORT).show();
-
+                                                    Toast.makeText(RegisterActivity.this, "Didnt work", Toast.LENGTH_SHORT).show();
                                                 }
-
-                                                //startActivity
                                             });
-
                                         }else{
                                             Toast.makeText(RegisterActivity.this, "didnt even logged in", Toast.LENGTH_SHORT).show();
                                         }
