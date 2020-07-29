@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin">
+    tools:context=".Admin"
+   >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/matricule2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        android:layout_margin="20dp"
+        android:text="Matricule : " />
+
+    <TextView
+        android:id="@+id/full_name2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/matricule2"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_margin="20dp"
+
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        android:text="Nom Et Prénom : " />
+    <TextView
+        android:id="@+id/mail2"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+
+        android:layout_below="@id/full_name2"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        android:text="Mail : " />
+
+    <TextView
+        android:id="@+id/favoris"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mail2"
+        android:layout_margin="20dp"
+
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        android:text="Spécialité Favorable" />
+    <TextView
+        android:id="@+id/Moy1"
+        android:layout_width="match_parent"
+        android:layout_below="@id/favoris"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:layout_margin="20dp"
+
+        android:textStyle="bold"
+
+        android:text="Moyenne Unité Info : " />
+    <TextView
+        android:id="@+id/Moy2"
+        android:layout_width="match_parent"
+        android:layout_below="@id/Moy1"
+        android:layout_margin="20dp"
+
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        android:text="Moyenne Unité Math : " />
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Moy2"
+        android:layout_margin="20dp"
+
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        android:text="Statut : "
+
+        />
+
+    <Button
+        android:id="@+id/valider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/status"
+
+        android:text="valider" />
+
+    <Button
+        android:id="@+id/refuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/valider"
+        android:text="Refuser" />
+</RelativeLayout>
